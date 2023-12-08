@@ -1,15 +1,3 @@
-const arrayIsSorted = (array) => {
-	for (let i = 0; i < array.length; i++) {
-		if (!array[i + 1]) {
-			return true;
-		} else {
-			if (array[i] > array[i + 1]) {
-				return false;
-			}
-		}
-	}
-};
-
 const removeDuplicates = (array) => {
 	const values = [];
 	for (let i = 0; i < array.length; i++) {
@@ -26,48 +14,10 @@ const removeDuplicates = (array) => {
 	return array;
 };
 
-const mergeSort = (array) => {
-	if (array.length <= 1) {
-		return array;
-	}
-	const middle = Math.floor(array.length / 2);
-
-	const leftArr = array.slice(0, middle);
-	const rightArr = array.slice(middle);
-
-	const sortLeft = mergeSort(leftArr);
-	const sortRight = mergeSort(rightArr);
-
-	merge(sortLeft, sortRight);
-
-	return array;
-};
-
-const merge = (left, right) => {
-	let result = [];
-	let leftIndex = 0;
-	let rightIndex = 0;
-
-	while (leftIndex < left.length && rightIndex < right.length) {
-		if (left[leftIndex] < right[rightIndex]) {
-			result.push(left[leftIndex]);
-			leftIndex++;
-		} else {
-			result.push(right[rightIndex]);
-			rightIndex++;
-		}
-	}
-	return [...result, ...left, ...right];
-};
-
 let myArray = [1, 1, 2, 3, 3, 7, 6, 2, 14, 5, 5];
 
-if (!arrayIsSorted(myArray)) {
-	console.log(`running`);
-	myArray = mergeSort(myArray);
-}
-
-console.log(myArray);
+const sortedArray = myArray.sort();
+console.log(removeDuplicates(sortedArray));
 
 class Node {
 	constructor(data) {
